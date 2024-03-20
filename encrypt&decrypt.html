@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Encryption/Decryption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h4>Message Encryption/Decryption</h4>
+    <textarea id="message" placeholder="Enter your message"></textarea><br>
+    <input type="password" id="password" placeholder="Enter password"><br>
+    <button onclick="encryptMessage()">Encrypt</button>
+    <button onclick="decryptMessage()">Decrypt</button><br><br>
+    <textarea id="output" placeholder="Encrypted/Decrypted message" readonly></textarea>
+
+    <script>
+        function encryptMessage() {
+            var message = document.getElementById("message").value;
+            var password = document.getElementById("password").value;
+            var encryptedMessage = CryptoJS.AES.encrypt(message, password).toString();
+            document.getElementById("output").value = encryptedMessage;
+        }
+
+        function decryptMessage() {
+            var encryptedMessage = document.getElementById("output").value;
+            var password = document.getElementById("password").value;
+            var decryptedMessage = CryptoJS.AES.decrypt(encryptedMessage, password).toString(CryptoJS.enc.Utf8);
+            document.getElementById("output").value = decryptedMessage;
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+</body>
+</html>

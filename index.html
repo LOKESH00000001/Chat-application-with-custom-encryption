@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chat app</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div id="chat-window">
+      <ul id="messages"></ul>
+    </div>
+    <input type="text" id="message-input" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button> <button <a  id="popup-link">Encrypt & decrypt</a> </button>
+  </div>
+ 
+  <div id="popup-window">
+  <iframe src="https://www.google.com" height="60%" width="70%"></iframe>
+  <button id="close-button">Close</button>
+  </div>  
+
+<script>
+  // Get the elements by their ID
+  var popupLink = document.getElementById("popup-link");
+  var popupWindow = document.getElementById("popup-window");
+  var closeButton = document.getElementById("close-button");
+  // Show the pop-up window when the link is clicked
+  popupLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    popupWindow.style.display = "block";
+  });
+  // Hide the pop-up window when the close button is clicked
+  closeButton.addEventListener("click", function() {
+    popupWindow.style.display = "none";
+  });
+</script>   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
